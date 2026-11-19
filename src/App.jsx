@@ -8,21 +8,29 @@ const todoList = [
 
 function App() {
 
-
   function addTodo() {
     // const nuovoValore = [...todoList];
     // nuovoValore.push("Nuovo elemento");
 
     const nuovoValore = [
       ...todoList,
-      "Nuovo Elemento"
+      userInput
     ];
 
     setTodoList(nuovoValore);
   }
 
+  function updateUserText(event) {
+    // const inputEl = event.target;
+    // const valoreInput = inputEl.value;
 
+    // setUserInput(valoreInput);
+
+    setUserInput(event.target.value);
+  }
   const [todoList, setTodoList] = useState([]);
+
+  const [userInput, setUserInput] = useState("");
   return (
     <>
 
@@ -33,8 +41,10 @@ function App() {
 
 
       </ul>
-      <input type="text" placeholder="nuovo todo" />
+      <input onChange={updateUserText} type="text" placeholder="nuovo todo" />
       <button onClick={addTodo}>Aggiungi elemento</button>
+
+      <p>L'utente ha scritto : {userInput}</p>
 
 
     </>
