@@ -41,7 +41,7 @@ function App() {
 
 
       </ul>
-      <input onChange={updateUserText} type="text" placeholder="nuovo todo" />
+      <input value={userInput} onChange={updateUserText} type="text" placeholder="nuovo todo" />
       <button onClick={addTodo}>Aggiungi elemento</button>
 
       <p>L'utente ha scritto : {userInput}</p>
