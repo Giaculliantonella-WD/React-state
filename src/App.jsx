@@ -79,11 +79,11 @@ function App() {
             <span>Titolo</span>
             <input value={titolo} onChange={updateTitolo} type="text" placeholder="Titolo Todo" />
           </label>
-          <label class="vertical">
+          <label className="vertical">
             <span>Descrizione</span>
             <textarea value={descrizione} onChange={updateDescrizione} placeholder="Descrizione Todo" />
           </label>
-          <label class="vertical">
+          <label className="vertical">
             <span>Categoria</span>
             <select value={categoria} onChange={updateCategoria}>
               <option value="" disabled>Selezione una Categoria</option>
@@ -92,7 +92,7 @@ function App() {
               <option value="altro">altro</option>
             </select>
           </label>
-          <label class="horizontal">
+          <label className="horizontal">
             <input type="checkbox" checked={IsImportante} onChange={updateIsImportante} />
             <span>Importante</span>
           </label>
