@@ -9,43 +9,101 @@ const todoList = [
 function App() {
 
   function addTodo() {
-    // const nuovoValore = [...todoList];
-    // nuovoValore.push("Nuovo elemento");
 
-    const nuovoValore = [
+    const nuovoOggettoTodo = {
+      titolo: titolo,
+      descrizione: descrizione,
+      IsImportante: IsImportante,
+      categoria: categoria
+
+    }
+
+    const nuovaLista = [
       ...todoList,
-      userInput
+      nuovoOggettoTodo
     ];
 
-    setTodoList(nuovoValore);
+    setTodoList(nuovaLista);
+
   }
 
-  function updateUserText(event) {
-    // const inputEl = event.target;
-    // const valoreInput = inputEl.value;
+  function updateTitolo(event) {
 
-    // setUserInput(valoreInput);
 
-    setUserInput(event.target.value);
+    setTitolo(event.target.value);
   }
-  const [todoList, setTodoList] = useState([]);
 
-  const [userInput, setUserInput] = useState("");
+  function updateDescrizione(event) {
+    setDescrizione(event.target.value);
+  }
+
+  function updateIsImportante(event) {
+    setIsImportante(event.target.checked);
+  }
+
+  function updateCategoria(event) {
+    setCategoria(event.target.value);
+  }
+
+
+  const [todoList, setTodoList] = useState([])
+  const [titolo, setTitolo] = useState("");
+  const [descrizione, setDescrizione] = useState("");
+  const [IsImportante, setIsImportante] = useState(true);
+  const [categoria, setCategoria] = useState("");
   return (
     <>
+      {/* visualizza lista */}
+      <div id="todo-list">
+        <h2>ToDo List</h2>
+        <ul>
+          {todoList.map((todoItem, i) =>
+            <li key={i}>{todoItem.titolo}- {todoItem.categoria}</li>
+          )}
+        </ul>
+      </div>
+      {/* inserimento nuovo item */}
+      <div id="todo-insert">
+        {/* {inserimento form} */}
+        <div id="todo-insert-form">
+          <label class="vertical">
+            <span>Titolo</span>
+            <input value={titolo} onChange={updateTitolo} type="text" placeholder="Titolo Todo" />
+          </label>
+          <label class="vertical">
+            <span>Descrizione</span>
+            <textarea value={descrizione} onChange={updateDescrizione} placeholder="Descrizione Todo" />
+          </label>
+          <label class="vertical">
+            <span>Categoria</span>
+            <select value={categoria} onChange={updateCategoria}>
+              <option value="" disabled>Selezione una Categoria</option>
+              <option value="casa">casa</option>
+              <option value="lavoro">lavoro</option>
+              <option value="altro">altro</option>
+            </select>
+          </label>
+          <label class="horizontal">
+            <input type="checkbox" checked={IsImportante} onChange={updateIsImportante} />
+            <span>Importante</span>
+          </label>
 
-      <h2>ToDo List</h2>
+          <button onClick={addTodo}>Aggiungi elemento</button>
+        </div>
 
-      <ul>
-        {todoList.map((todoItem, i) => <li key={i}>{todoItem}</li>)}
+        {/* pannello preview */}
 
-
-      </ul>
-      <input value={userInput} onChange={updateUserText} type="text" placeholder="nuovo todo" />
-      <button onClick={addTodo}>Aggiungi elemento</button>
-
-      <p>L'utente ha scritto : {userInput}</p>
-
+        <div id="todo-insert-preview">
+          <div>L'utente ha scritto:
+            <ul>
+              <li>Titolo: {titolo}</li>
+              <li>Descrizione: {descrizione}</li>
+              <li>Is Importante: {IsImportante ? "si" : "no"}</li>
+              <li>Categoria: {categoria}</li>
+            </ul>
+          </div>
+        </div>
+      </div >
 
     </>
 
