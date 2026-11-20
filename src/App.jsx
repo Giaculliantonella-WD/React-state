@@ -87,9 +87,9 @@ function App() {
             <span>Categoria</span>
             <select value={categoria} onChange={updateCategoria}>
               <option value="" disabled>Selezione una Categoria</option>
-              <option value="casa">casa</option>
-              <option value="lavoro">lavoro</option>
-              <option value="altro">altro</option>
+              <option value="casa">Casa</option>
+              <option value="lavoro">Lavoro</option>
+              <option value="altro">Altro</option>
             </select>
           </label>
           <label className="horizontal">
@@ -105,10 +105,10 @@ function App() {
         <div id="todo-insert-preview">
           <div>L'utente ha scritto:
             <ul>
-              <li>Titolo: {titolo}</li>
-              <li>Descrizione: {descrizione}</li>
-              <li>Is Importante: {IsImportante ? "si" : "no"}</li>
-              <li>Categoria: {categoria}</li>
+              <li>Titolo: {titolo || "vuoto"}</li>
+              <li>Descrizione: {descrizione || "vuota"}</li>
+              <li>Importante: {IsImportante ? "si" : "no"}</li>
+              <li>Categoria: {categoria || "nessuna"}</li>
             </ul>
           </div>
         </div>
